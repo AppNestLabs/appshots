@@ -1,0 +1,13 @@
+{
+  "servers": {
+    "appshots": {
+      "type": "stdio",
+      "command": "node",
+      "args": [
+        "/Users/alcaamado/Desarrollo/Web/appshots/mcp/dist/index.js",
+        "--fs-root",
+        "/Users/alcaamado/Desarrollo/AppShots"
+      ]
+    }
+  }
+}
