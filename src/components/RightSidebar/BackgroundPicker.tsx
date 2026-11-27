@@ -6,6 +6,7 @@
 
 import type { Screenshot, GradientPreset } from "../../types";
 import { STYLES } from "./constants";
+import { resolveGradient } from "../../lib/gradient";
 
 interface BackgroundPickerProps {
   /** Active screenshot data */
@@ -66,21 +67,44 @@ export const BackgroundPicker = ({
           className={STYLES.colorInput}
         />
       ) : (
-        <div className="grid grid-cols-3 gap-1">
-          {gradientPresets.map((preset) => (
-            <button
-              key={preset.id}
-              onClick={() => onUpdateScreenshot({ gradientPresetId: preset.id })}
-              className={`${STYLES.gradientButton} ${
-                screenshot.gradientPresetId === preset.id
-                  ? STYLES.gradientButtonActive
-                  : ""
-              }`}
-              style={{
-                background: `linear-gradient(135deg, ${preset.from}, ${preset.to})`,
-              }}
-            />
-          ))}
+        <div className="flex flex-col gap-2">
+          <div className="grid grid-cols-3 gap-1">
+            {gradientPresets.map((preset) => (
+              <button
+                key={preset.id}
+                onClick={() =>
+                  onUpdateScreenshot({ gradientPresetId: preset.id, gradientColors: null })
+                }
+                className={`${STYLES.gradientButton} ${
+                  !screenshot.gradientColors && screenshot.gradientPresetId === preset.id
+                    ? STYLES.gradientButtonActive
+                    : ""
+                }`}
+                style={{
+                  background: `linear-gradient(135deg, ${preset.from}, ${preset.to})`,
+                }}
+              />
+            ))}
+          </div>
+          {/* Custom gradient: top and bottom colors */}
+          <div className="flex items-center gap-2 text-xs text-white/60">
+            <span>Custom</span>
+            {(["from", "to"] as const).map((stop) => {
+              const current = resolveGradient(screenshot);
+              return (
+                <input
+                  key={stop}
+                  type="color"
+                  value={current[stop]}
+                  aria-label={stop === "from" ? "Gradient top color" : "Gradient bottom color"}
+                  onChange={(e) =>
+                    onUpdateScreenshot({ gradientColors: { ...current, [stop]: e.target.value } })
+                  }
+                  className={STYLES.colorInput}
+                />
+              );
+            })}
+          </div>
         </div>
       )}
     </div>

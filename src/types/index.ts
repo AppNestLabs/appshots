@@ -80,6 +80,8 @@ export type Screenshot = {
   backgroundColor: string;
   backgroundMode: "solid" | "gradient" | "image";
   gradientPresetId: string | null;
+  /** Custom gradient colors; when set they win over gradientPresetId */
+  gradientColors?: { from: string; to: string } | null;
   textColor: string;
   headlineX: number;
   headlineY: number;

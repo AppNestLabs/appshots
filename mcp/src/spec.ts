@@ -159,9 +159,14 @@ const backgroundSchema = z
       .optional()
       .describe("Solid background color, e.g. #8b5cf6"),
     gradient: z
-      .string()
+      .union([
+        z.string(),
+        z.object({ from: colorSchema, to: colorSchema }),
+      ])
       .optional()
-      .describe("Gradient preset id (sunset, ocean, mint, berry, royal, rose)"),
+      .describe(
+        'Gradient preset id (sunset, ocean, mint, berry, royal, rose) or custom colors, top to bottom: { "from": "#141E30", "to": "#243B55" }',
+      ),
   })
   .refine((value) => !(value.color && value.gradient), {
     message: "background: set either color or gradient, not both",
@@ -213,7 +218,7 @@ const baseShape = {
     .string()
     .default("6.7")
     .describe(
-      'Export size id from get_catalog ("6.7", "6.5", "5.5", "ipad") or explicit "WIDTHxHEIGHT", e.g. "1284x2778"',
+      'Export size id from get_catalog ("6.9", "6.7", "6.5", "5.5", "ipad", "play") or explicit "WIDTHxHEIGHT", e.g. "1284x2778"',
     ),
   namePrefix: z
     .string()
@@ -388,7 +393,8 @@ export const buildRenderRequest = async (
   for (const [index, screen] of input.screens.entries()) {
     const label = `screens[${index}]`;
 
-    if (screen.background.gradient && !validGradientIds.has(screen.background.gradient)) {
+    const gradient = screen.background.gradient;
+    if (typeof gradient === "string" && !validGradientIds.has(gradient)) {
       throw new SpecError(
         `${label}.background.gradient: unknown gradient "${screen.background.gradient}". ` +
           `Valid gradients: ${listSet(validGradientIds)}`,
@@ -422,7 +428,8 @@ export const buildRenderRequest = async (
       subheadline: screen.subheadline,
       backgroundColor: screen.background.color ?? "#8b5cf6",
       backgroundMode: screen.background.gradient ? "gradient" : "solid",
-      gradientPresetId: screen.background.gradient ?? null,
+      gradientPresetId: typeof gradient === "string" ? gradient : null,
+      gradientColors: typeof gradient === "object" ? gradient : null,
       textColor: screen.textColor,
       headlineX: screen.headlineLayout?.x ?? TEXT_DEFAULTS.headline.x,
       headlineY: screen.headlineLayout?.y ?? TEXT_DEFAULTS.headline.y,
