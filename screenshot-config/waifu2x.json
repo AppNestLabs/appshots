@@ -1,0 +1,178 @@
+{
+  "outDir": "screenshots-output",
+  "exportSize": "6.7",
+  "namePrefix": "waifu2x",
+  "previewWidth": 320,
+  "headlineFontSize": 72,
+  "subheadlineFontSize": 42,
+  "screens": [
+    {
+      "name": "screenshot-1",
+      "headline": "<b>100% On-Device Processing</b>",
+      "subheadline": "Your images never leave your device.",
+      "fontFamily": "Inter",
+      "textColor": "#ffffff",
+      "background": {
+        "gradient": "royal"
+      },
+      "headlineLayout": {
+        "x": 50,
+        "y": 10,
+        "width": 80
+      },
+      "subheadlineLayout": {
+        "x": 50,
+        "y": 20,
+        "width": 80
+      },
+      "devices": [
+        {
+          "model": "iphone-16-pro-max",
+          "color": "black",
+          "screen": "Home.png",
+          "preset": "perspective",
+          "style": "3d",
+          "scale": 90,
+          "x": 50,
+          "y": 30,
+          "rotateY": -20,
+          "rotateX": -5,
+          "shadow": {
+            "enabled": true,
+            "color": "#000000",
+            "blur": 30,
+            "offsetX": 0,
+            "offsetY": 15
+          }
+        }
+      ],
+      "overlays": []
+    },
+    {
+      "name": "screenshot-2",
+      "headline": "<b>Tailored AI Upscaling</b>",
+      "subheadline": "Fine-tune modes, scale & noise reduction",
+      "fontFamily": "Inter",
+      "textColor": "#ffffff",
+      "background": {
+        "gradient": "royal"
+      },
+      "headlineLayout": {
+        "x": 50,
+        "y": 10,
+        "width": 80
+      },
+      "subheadlineLayout": {
+        "x": 50,
+        "y": 20,
+        "width": 80
+      },
+      "devices": [
+        {
+          "model": "iphone-16-pro-max",
+          "color": "black",
+          "screen": "Form.png",
+          "preset": "perspective",
+          "style": "3d",
+          "scale": 90,
+          "x": 50,
+          "y": 30,
+          "rotateY": -20,
+          "rotateX": 5,
+          "shadow": {
+            "enabled": true,
+            "color": "#000000",
+            "blur": 30,
+            "offsetX": 0,
+            "offsetY": 15
+          }
+        }
+      ],
+      "overlays": []
+    },
+    {
+      "name": "screenshot-3",
+      "headline": "<b>Stunning Details, Zero Loss</b>",
+      "subheadline": "Compare original and enhanced quality instantly",
+      "fontFamily": "Inter",
+      "textColor": "#ffffff",
+      "background": {
+        "gradient": "royal"
+      },
+      "headlineLayout": {
+        "x": 50,
+        "y": 10,
+        "width": 80
+      },
+      "subheadlineLayout": {
+        "x": 50,
+        "y": 20,
+        "width": 80
+      },
+      "devices": [
+        {
+          "model": "iphone-16-pro-max",
+          "color": "black",
+          "screen": "Result.png",
+          "preset": "perspective",
+          "style": "3d",
+          "scale": 90,
+          "x": 50,
+          "y": 30,
+          "rotateY": -20,
+          "rotateX": -5,
+          "shadow": {
+            "enabled": true,
+            "color": "#000000",
+            "blur": 30,
+            "offsetX": 0,
+            "offsetY": 15
+          }
+        }
+      ],
+      "overlays": []
+    },
+    {
+      "name": "screenshot-4",
+      "headline": "<b>Save Time with Presets</b>",
+      "subheadline": "Use default settings or create your own custom flows",
+      "fontFamily": "Inter",
+      "textColor": "#ffffff",
+      "background": {
+        "gradient": "royal"
+      },
+      "headlineLayout": {
+        "x": 50,
+        "y": 10,
+        "width": 80
+      },
+      "subheadlineLayout": {
+        "x": 50,
+        "y": 20,
+        "width": 80
+      },
+      "devices": [
+        {
+          "model": "iphone-16-pro-max",
+          "color": "black",
+          "screen": "Presets.png",
+          "preset": "perspective",
+          "style": "3d",
+          "scale": 90,
+          "x": 50,
+          "y": 30,
+          "rotateY": 8,
+          "rotateX": 5,
+          "shadow": {
+            "enabled": true,
+            "color": "#000000",
+            "blur": 30,
+            "offsetX": 0,
+            "offsetY": 15
+          }
+        }
+      ],
+      "overlays": []
+    }
+  ]
+}

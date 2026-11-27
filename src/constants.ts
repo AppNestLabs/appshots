@@ -318,4 +318,11 @@ export const exportSizes: ExportSize[] = [
     width: 2048,
     height: 2732,
   },
+  {
+    // Google Play: phone and tablet screenshots (9:16; Play rejects ratios above 2:1)
+    id: "play",
+    label: "Google Play phone & tablet (1440 × 2560)",
+    width: 1440,
+    height: 2560,
+  },
 ];
