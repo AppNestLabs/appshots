@@ -325,4 +325,18 @@ export const exportSizes: ExportSize[] = [
     width: 1440,
     height: 2560,
   },
+  {
+    // Google Play feature graphic (store listing header)
+    id: "play-feature",
+    label: "Google Play feature graphic (1024 × 500)",
+    width: 1024,
+    height: 500,
+  },
+  {
+    // App Store product page header (iOS 27+): 21:9, key artwork inside the centered 1646 × 661 safe area
+    id: "appstore-header",
+    label: "App Store product page header (3840 × 1646)",
+    width: 3840,
+    height: 1646,
+  },
 ];

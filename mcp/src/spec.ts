@@ -207,9 +207,11 @@ const screenSchema = z.object({
   subheadlineLayout: textLayoutSchema.optional(),
   devices: z
     .array(deviceSchema)
-    .min(1)
     .max(6)
-    .describe("Devices in this screenshot, drawn back to front"),
+    .default([])
+    .describe(
+      "Devices in this screenshot, drawn back to front. Empty for artwork without a device (feature graphics, headers built from overlays).",
+    ),
   overlays: z.array(overlaySchema).max(12).default([]),
 });
 
@@ -218,7 +220,7 @@ const baseShape = {
     .string()
     .default("6.7")
     .describe(
-      'Export size id from get_catalog ("6.9", "6.7", "6.5", "5.5", "ipad", "play") or explicit "WIDTHxHEIGHT", e.g. "1284x2778"',
+      'Export size id from get_catalog ("6.9", "6.7", "6.5", "5.5", "ipad", "play", "play-feature", "appstore-header") or explicit "WIDTHxHEIGHT", e.g. "1284x2778"',
     ),
   namePrefix: z
     .string()
@@ -441,7 +443,7 @@ export const buildRenderRequest = async (
       fontFamily: screen.fontFamily,
       overlayImages,
       devices: deviceInstances,
-      activeDeviceId: deviceInstances[0].id,
+      activeDeviceId: deviceInstances[0]?.id ?? "",
     });
 
     fileStems.push(screen.name ?? `${input.namePrefix}-${index + 1}`);
